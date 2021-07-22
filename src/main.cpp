@@ -21,10 +21,11 @@
 // tilter               motor         17              
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
-
 #include "vex.h"
 using namespace vex;
 
+// A global instance of competition
+competition Competition;
 
 ///
 // Globals
@@ -32,26 +33,27 @@ using namespace vex;
 //  - we also try to avoid "hard coding" number.  use variables wherever
 //  - you can, so you can change things when you eventually need to
 ///
-int         mogo_rev   =  1;             // If the mobile goal lift needs to be reversed, DO NOT REVERSE THE MOTOR, flip this variable instead!
-const int   MOGO_OUT   =  1150*mogo_rev; // Out position for the mogo lift
-const int   MOGO_NEUT  =  700*mogo_rev;  // Neutral position
-
 const int  RESET_TIMEOUT     = 3500; // Time for resetting sensors to give up
 bool       WAS_RESET_SUCCESS = true; // Flag for if resetting worked
 
-const float SCALE      =  12000/100; // Makes input out of 100 instead of 12000
+const float SCALE      =  12000/127; // Makes input out of 127 instead of 12000
 const int   THRESH     =  5;         // When joystick is within this, the motors will set to 0.  This is the deadzone
 const int   DELAY_TIME =  10;        // Delay time for loops (ms)
 
+int mogo_rev = 1;
+const int   MOGO_OUT   =  1150*mogo_rev;       // Out position for the mogo lift
+const int MOGO_NEUT = 700*mogo_rev;
+const int   MOGO_IN    =  0*mogo_rev;       // In position for mogo lift
+
 const int TILTER_IN  = -20;
-const int TILTER_OUT = -315;
+const int TILTER_OUT = -630/2;
 
 
 
 ///
 // Set Motor Functions
 //  - this sets motors between -12000 and 12000.  i'm used to
-//  - -100 to 100, so the "scale" variable lets me use that as
+//  - -127 to 127, so the "scale" variable lets me use that as
 //  - inputs and scales it to -12000 to 12000
 ///
 
@@ -62,18 +64,6 @@ void set_tank(int l, int r) {
   rb.spin(fwd, r*SCALE, voltageUnits::mV);
   rf.spin(fwd, r*SCALE, voltageUnits::mV);
 }
-void set_mogo    (int input) { mogo.    spin(fwd, input*SCALE*mogo_rev, voltageUnits::mV); }
-void set_conveyor(int input) { conveyor.spin(fwd, input*SCALE,          voltageUnits::mV); }
-void set_intake  (int input) { intake.  spin(fwd, input*SCALE,          voltageUnits::mV); }
-void set_tilter  (int input) { tilter.  spin(fwd, input*SCALE,          voltageUnits::mV); }
-
-// Set position
-void set_mogo_position   (int pos, int speed) { mogo.    startRotateTo(pos, rotationUnits::deg, speed, velocityUnits::pct); }
-void set_tilter_position (int pos, int speed) { tilter.  startRotateTo(pos, rotationUnits::deg, speed, velocityUnits::pct); }
-
-int get_mogo() { return mogo.rotation(deg)*mogo_rev; }
-
-// Brake modes
 void brake_drive() {
   lf.setStopping(hold);
   lb.setStopping(hold);
@@ -85,6 +75,19 @@ void coast_drive() {
   lb.setStopping(coast);
   rf.setStopping(coast);
   rb.setStopping(coast);
+}
+void set_mogo    (int input) { mogo.    spin(fwd, input*SCALE*mogo_rev, voltageUnits::mV); }
+void set_conveyor(int input) { conveyor.spin(fwd, input*SCALE,          voltageUnits::mV); }
+void set_intake  (int input) { intake.  spin(fwd, input*SCALE,          voltageUnits::mV); }
+void set_tilter  (int input) { tilter.  spin(fwd, input*SCALE,          voltageUnits::mV); }
+
+// Set position
+void set_mogo_position   (int pos, int speed) { mogo.    startRotateTo(pos, rotationUnits::deg, speed, velocityUnits::pct); }
+void set_tilter_position (int pos, int speed) { tilter.  startRotateTo(pos, rotationUnits::deg, speed, velocityUnits::pct); }
+
+
+int get_mogo() {
+  return mogo.rotation(deg)*mogo_rev;
 }
 
 
@@ -155,37 +158,146 @@ void zero_sensors() {
 }
 
 
+///
+// AUton
+///
+void turn_90(int dir) {
+  set_tank(80*dir, -80*dir);
+  wait(400, msec);
+  set_tank(0, 0);
+}
+void
+auton() {
 
-///
-// Main
-///
-int main() {
+  int exit = 0;
+  while (exit<1000) {
+    exit+=DELAY_TIME;
+    if (abs(get_mogo())>abs(MOGO_OUT-100)) {
+      if (mogo.velocity(pct)==0) 
+        set_mogo(0);
+      else 
+        set_mogo(20);
+     }
+     else {
+      set_mogo(127);
+     }
+     wait(DELAY_TIME, msec);
+  }
+  exit=0;
+  set_tilter_position(TILTER_OUT, 100);
+  
+  set_tank(-127, -127);
+  wait(500, msec);
+  set_tank(0, 0);
+  wait(500, msec);
+
+  bool is_upp = false;
+  while (exit<1000) {
+    exit+=DELAY_TIME;
+      if (abs(get_mogo())<150) {
+        if (mogo.velocity(pct)==0) {
+          is_upp = true;
+          set_mogo(0);
+        }
+        else {
+          set_mogo(is_upp?0:-20);
+        }
+      }
+      else {
+        is_upp = false;
+        set_mogo(-127);
+      }
+    wait(DELAY_TIME, msec);
+  } 
+  exit=0;
+  is_upp = true; 
+
+  set_conveyor(127);
+  set_intake(127);
+  wait(1500, msec);
+  set_conveyor(0);
+  set_intake(0);
+
+  turn_90(-1);
+  wait(300, msec);
+
+  set_tank(-127,-127);
+  wait(400, msec);
+
+  turn_90(1);
+  wait(300, msec);
+
+
+  set_tank(80, 80);
+  wait(500, msec);
+  set_tank(0, 0);
+
+  while (exit<1000) {
+    exit+=DELAY_TIME;
+    if (abs(get_mogo())>abs(MOGO_OUT-100)) {
+      if (mogo.velocity(pct)==0) 
+        set_mogo(0);
+      else 
+        set_mogo(20);
+     }
+     else {
+      set_mogo(127);
+     }
+     wait(DELAY_TIME, msec);
+  }
+}
+
+/*---------------------------------------------------------------------------*/
+/*                          Pre-Autonomous Functions                         */
+/*                                                                           */
+/*  You may want to perform some actions before the competition starts.      */
+/*  Do them in the following function.  You must return from this function   */
+/*  or the autonomous and usercontrol tasks will not be started.  This       */
+/*  function is only called once after the V5 has been powered on and        */
+/*  not every time that the robot is disabled.                               */
+/*---------------------------------------------------------------------------*/
+
+void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
-  zero_sensors();
+  // All activities that occur before the competition starts
+  // Example: clearing encoders, setting servo positions, ...
+  zero_sensors(); 
+}
 
-  // If zeroing was not successful, print to screen
-  if (!WAS_RESET_SUCCESS) {
-    Controller1.rumble("-"); // Vibrate the controller so the user knows something is wrong
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*                              Autonomous Task                              */
+/*                                                                           */
+/*  This task is used to control your robot during the autonomous phase of   */
+/*  a VEX Competition.                                                       */
+/*                                                                           */
+/*  You must modify the code to add your own robot specific commands here.   */
+/*---------------------------------------------------------------------------*/
 
-    Brain.Screen.setPenColor(red);
-    Brain.Screen.setFillColor(red);
-    Brain.Screen.drawRectangle(0, 0, 480, 272);
+void autonomous(void) {
+  // ..........................................................................
+  // Insert autonomous user code here.
+  // ..........................................................................
+  brake_drive();
+  auton();
+  wait(500, msec);
+  coast_drive();
+}
 
-    for (int i=0;i<15;i++) {
-      Brain.Screen.setPenColor(white);
-      Brain.Screen.printAt(100, 16*(i+1), "!SUB-SYSTEMS DID NOT ZERO!");
-      wait(DELAY_TIME, msec);
-    }
-  } 
-  // If zeroing was successful, make the brain green
-  else {
-    Brain.Screen.setPenColor(green);
-    Brain.Screen.setFillColor(green);
-    Brain.Screen.drawRectangle(0, 0, 480, 272);
-  }
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*                              User Control Task                            */
+/*                                                                           */
+/*  This task is used to control your robot during the user control phase of */
+/*  a VEX Competition.                                                       */
+/*                                                                           */
+/*  You must modify the code to add your own robot specific commands here.   */
+/*---------------------------------------------------------------------------*/
 
+void usercontrol(void) {
+  // User control code here, inside the loop
   // Parameters for user control
   bool mogo_up;
   bool neut = 0;
@@ -199,10 +311,14 @@ int main() {
   mogo_up = true;
   tilter_up = true;
 
+
   int intake_conveyor_speed = 0;
+  while (1) {
+    // This is the main execution loop for the user control program.
+    // Each time through the loop your program should update motor + servo
+    // values based on feedback from the joysticks.
 
-  while (true) {
-
+    
     ///
     // Joysticks
     ///
@@ -218,7 +334,6 @@ int main() {
     ///
     // Mogo
     //  - mogo has two positions, pressing L1 toggles it between them
-    //  - when L1 is held, the mogo lift will go to the neutral position
     ///
 
     // Flip boolean when button is pressed
@@ -248,6 +363,10 @@ int main() {
       mogo_timer = 0;
     }
 
+    //if (Controller1.ButtonL2.pressing()) {
+    //  neut = true;
+    //}
+
     // Have the motor go to a position depending on boolean state.
     // This runs the motor at full power until the velocity of the motor is 0.
     // when the velocity is 0, we know the subsystem has reached a hardstop.
@@ -267,7 +386,7 @@ int main() {
       }
       else {
         is_up = false;
-        set_mogo(-100);
+        set_mogo(-127);
       }
     }
     else if (!mogo_up) {
@@ -278,7 +397,7 @@ int main() {
           set_mogo(20);
       }
       else {
-        set_mogo(100);
+        set_mogo(127);
       }
     }
 
@@ -312,10 +431,10 @@ int main() {
     // Intake and Conveyor
     ///
     if (Controller1.ButtonR1.pressing()) {
-      intake_conveyor_speed =  100;
+      intake_conveyor_speed =  127;
     }
     else if (Controller1.ButtonR2.pressing()) {
-      intake_conveyor_speed = -100;
+      intake_conveyor_speed = -127;
     }
     else {
       intake_conveyor_speed =  0;
@@ -323,8 +442,23 @@ int main() {
     set_intake  (intake_conveyor_speed);
     set_conveyor(intake_conveyor_speed);
 
-
-
     wait(DELAY_TIME, msec); // Don't hog the CPU!
+  }
+}
+
+//
+// Main will set up the competition functions and callbacks.
+//
+int main() {
+  // Set up callbacks for autonomous and driver control periods.
+  Competition.autonomous(autonomous);
+  Competition.drivercontrol(usercontrol);
+
+  // Run the pre-autonomous function.
+  pre_auton();
+
+  // Prevent main from exiting with an infinite loop.
+  while (true) {
+    wait(100, msec);
   }
 }
