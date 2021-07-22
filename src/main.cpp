@@ -34,7 +34,7 @@ competition Competition;
 //  - you can, so you can change things when you eventually need to
 ///
 const int  RESET_TIMEOUT     = 3500; // Time for resetting sensors to give up
-bool       WAS_RESET_SUCCESS = true; // Flag for if resetting worked
+bool       WAS_RESET_SUCCESS = false; // Flag for if resetting worked
 
 const float SCALE      =  12000/127; // Makes input out of 127 instead of 12000
 const int   THRESH     =  5;         // When joystick is within this, the motors will set to 0.  This is the deadzone
@@ -141,7 +141,6 @@ void zero_sensors() {
       // Once timeout_timer is greater then RESET_TIMER, exit this loop
       timeout_timer+=DELAY_TIME;
       if (timeout_timer>RESET_TIMEOUT) {
-        WAS_RESET_SUCCESS = false;
         run = false;
       }
     }
@@ -155,6 +154,7 @@ void zero_sensors() {
   // If a mechanism didn't zero, reset it here
   if (!mogo_zero)   mogo.  resetPosition();
   if (!tilter_zero) tilter.resetPosition();
+  WAS_RESET_SUCCESS = true;
 }
 
 
@@ -280,6 +280,14 @@ void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
   // ..........................................................................
+  
+  //checks if pre_auton ran and if did not run pre_auto
+  if(WAS_RESET_SUCCESS == false){
+    zero_sensors();
+  }
+  else{ 
+    //nothing needed but makes code look cleaner 
+  }
   brake_drive();
   auton();
   wait(500, msec);
@@ -311,8 +319,16 @@ void usercontrol(void) {
   mogo_up = true;
   tilter_up = true;
 
-
   int intake_conveyor_speed = 0;
+
+  //checks if pre_auton ran and if did not run pre_auto
+  if(WAS_RESET_SUCCESS == false){
+    zero_sensors();
+  }
+  else{ 
+    //nothing needed but makes code look cleaner 
+  }
+
   while (1) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
