@@ -1,3 +1,211 @@
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         13              
+// lf                   motor         11              
+// rb                   motor         14              
+// rf                   motor         21              
+// conveyor             motor         12              
+// intake               motor         17              
+// mogo                 motor         18              
+// tilter               motor         15              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         13              
+// lf                   motor         11              
+// rb                   motor         14              
+// rf                   motor         21              
+// conveyor             motor         12              
+// intake               motor         17              
+// mogo                 motor         3               
+// tilter               motor         15              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         13              
+// lf                   motor         11              
+// rb                   motor         14              
+// rf                   motor         21              
+// conveyor             motor         12              
+// intake               motor         6               
+// mogo                 motor         3               
+// tilter               motor         15              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         13              
+// lf                   motor         11              
+// rb                   motor         14              
+// rf                   motor         21              
+// conveyor             motor         12              
+// intake               motor         6               
+// mogo                 motor         17              
+// tilter               motor         15              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         13              
+// lf                   motor         11              
+// rb                   motor         14              
+// rf                   motor         21              
+// conveyor             motor         12              
+// intake               motor         6               
+// mogo                 motor         18              
+// tilter               motor         15              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         13              
+// lf                   motor         11              
+// rb                   motor         14              
+// rf                   motor         21              
+// conveyor             motor         12              
+// intake               motor         6               
+// mogo                 motor         18              
+// tilter               motor         15              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         13              
+// lf                   motor         11              
+// rb                   motor         14              
+// rf                   motor         21              
+// conveyor             motor         12              
+// intake               motor         6               
+// mogo                 motor         18              
+// tilter               motor         17              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         13              
+// lf                   motor         11              
+// rb                   motor         14              
+// rf                   motor         21              
+// conveyor             motor         12              
+// intake               motor         6               
+// mogo                 motor         18              
+// tilter               motor         17              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         13              
+// lf                   motor         11              
+// rb                   motor         14              
+// rf                   motor         21              
+// conveyor             motor         1               
+// intake               motor         6               
+// mogo                 motor         18              
+// tilter               motor         17              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         13              
+// lf                   motor         11              
+// rb                   motor         14              
+// rf                   motor         9               
+// conveyor             motor         1               
+// intake               motor         6               
+// mogo                 motor         18              
+// tilter               motor         17              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         13              
+// lf                   motor         11              
+// rb                   motor         8               
+// rf                   motor         9               
+// conveyor             motor         1               
+// intake               motor         6               
+// mogo                 motor         18              
+// tilter               motor         17              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         3               
+// lf                   motor         11              
+// rb                   motor         8               
+// rf                   motor         9               
+// conveyor             motor         1               
+// intake               motor         6               
+// mogo                 motor         18              
+// tilter               motor         17              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         3               
+// lf                   motor         11              
+// rb                   motor         13              
+// rf                   motor         9               
+// conveyor             motor         1               
+// intake               motor         6               
+// mogo                 motor         18              
+// tilter               motor         17              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         3               
+// lf                   motor         11              
+// rb                   motor         13              
+// rf                   motor         9               
+// conveyor             motor         1               
+// intake               motor         6               
+// mogo                 motor         18              
+// tilter               motor         17              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         3               
+// lf                   motor         11              
+// rb                   motor         13              
+// rf                   motor         9               
+// conveyor             motor         1               
+// intake               motor         6               
+// mogo                 motor         18              
+// tilter               motor         17              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// lb                   motor         3               
+// lf                   motor         11              
+// rb                   motor         13              
+// rf                   motor         9               
+// conveyor             motor         1               
+// intake               motor         6               
+// mogo                 motor         18              
+// tilter               motor         17              
+// ---- END VEXCODE CONFIGURED DEVICES ----
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
@@ -36,7 +244,6 @@ competition Competition;
 const int  RESET_TIMEOUT     = 3500; // Time for resetting sensors to give up
 bool       WAS_RESET_SUCCESS = false; // Flag for if resetting worked
 
-const float SCALE      =  12000/127; // Makes input out of 127 instead of 12000
 const int   THRESH     =  5;         // When joystick is within this, the motors will set to 0.  This is the deadzone
 const int   DELAY_TIME =  10;        // Delay time for loops (ms)
 
@@ -58,6 +265,7 @@ const int TILTER_OUT = -630/2;
 ///
 
 // Set voltage
+const int SCALE = 120;
 void set_tank(int l, int r) {
   lf.spin(fwd, l*SCALE, voltageUnits::mV);
   lb.spin(fwd, l*SCALE, voltageUnits::mV);
@@ -281,13 +489,6 @@ void autonomous(void) {
   // Insert autonomous user code here.
   // ..........................................................................
   
-  //checks if pre_auton ran and if did not run pre_auto
-  if(WAS_RESET_SUCCESS == false){
-    zero_sensors();
-  }
-  else{ 
-    //nothing needed but makes code look cleaner 
-  }
   brake_drive();
   auton();
   wait(500, msec);
@@ -322,11 +523,8 @@ void usercontrol(void) {
   int intake_conveyor_speed = 0;
 
   //checks if pre_auton ran and if did not run pre_auto
-  if(WAS_RESET_SUCCESS == false){
-    zero_sensors();
-  }
-  else{ 
-    //nothing needed but makes code look cleaner 
+  while(WAS_RESET_SUCCESS == false){
+    wait(10, msec);
   }
 
   while (1) {
