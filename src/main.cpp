@@ -37,8 +37,8 @@ competition Competition;
 //  - we also try to avoid "hard coding" number.  use variables wherever
 //  - you can, so you can change things when you eventually need to
 ///
-const int  RESET_TIMEOUT     = 3500;  // Time for resetting sensors to give up
-bool       WAS_RESET_SUCCESS = false; // Flag for if resetting worked
+const int RESET_TIMEOUT     = 3500;  // Time for resetting sensors to give up
+bool      WAS_RESET_SUCCESS = false; // Flag for if resetting worked
 
 const int THRESH     =  5;  // When joystick is within this, the motors will set to 0.  This is the deadzone
 const int DELAY_TIME =  10; // Delay time for loops (ms)
@@ -200,6 +200,7 @@ void turn_90(int dir) {
   set_tank(0, 0);
 }
 
+bool did_auto_finish = false;
 void autonomous(void) {
   brake_drive();
 
@@ -279,6 +280,7 @@ void autonomous(void) {
      }
      wait(DELAY_TIME, msec);
   }
+  did_auto_finish = true;
 }
 
 
@@ -305,8 +307,10 @@ void usercontrol(void) {
   bool tilter_up;
   bool tilter_lock = 0;
 
-  mogo_up = true;
-  tilter_up = true;
+  if (did_auto_finish) {
+    mogo_up = false;
+    tilter_up = false;
+  }
 
   int intake_conveyor_speed = 0;
 
