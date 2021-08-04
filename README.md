@@ -3,8 +3,8 @@
 AMOGO (alliance mobile goal) is a ring focused robot that can fill a goal with rings in autonomous, platform, lift tipped mobile goals, and hold a neutral goal to the side of the robot. 
 
 ## Controls
-- `L1` Mogo Toggle.  When the lift is out and the button is held, the lift will come to a middle position.
-- `L2` Tilter Toggle.  
+- `L1` Mogo Toggle.  When the lift is out and the button is held, the lift will come to a middle position
+- `L2` Tilter Toggle
 - `R1` Intake + Conveyor In
 - `R2` Intake + Conveyor Out
 - Tank Drive (by default)
