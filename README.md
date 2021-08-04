@@ -25,3 +25,7 @@ VEX Forum
 
 [DOGO VEXcode](https://github.com/Unionjackjz1/HW-DOGO-VEXCODE/)    
 [AMOGO VEXcode](https://github.com/Unionjackjz1/HW-AMOGO-VEXCODE/)  
+
+## Contributors
+Thank you to the following for helping make this code:
+- Avi Dube
