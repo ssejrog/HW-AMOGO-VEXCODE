@@ -1,6 +1,6 @@
 # Harvard-Westlake's AMOGO - VEXcode
   
-AMOGO (alliance mobile goal) is a ring focused robot that can fill a goal with rings in autonomous, platform, lift tipped mobile goals, and hold a neutral goal to the side of the robot. 
+AMOGO (alliance mobile goal) is a ring focused robot that can fill a goal with rings in autonomous, hold an alliance mobile goal, platform, lift tipped mobile goals, and hold a neutral goal to the side of the robot. 
 
 ## Controls
 - `L1` Mogo Toggle.  When the lift is out and the button is held, the lift will come to a middle position
