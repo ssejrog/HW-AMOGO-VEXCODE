@@ -17,6 +17,7 @@ AMOGO (alliance mobile goal) is a ring focused robot that can fill a goal with r
  - Conveyor functions for opcontrol and autonomous.
  - Mogo functions for opcontrol.
  - Tilter functions for opcontrol.
+ - Voltage control for the drive.
 
 ## External Links
 
