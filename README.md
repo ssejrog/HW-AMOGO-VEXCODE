@@ -10,7 +10,7 @@ AMOGO (alliance mobile goal) is a ring focused robot that can fill a goal with r
 - `L2` Tilter Toggle
 - `R1` Intake + Conveyor In
 - `R2` Intake + Conveyor Out
-- Tank Drive (by default)
+- Tank Drive 
 
 ## Features
  - Simple time-based autonomous routine (moves alliance goal from the autonomous line).
