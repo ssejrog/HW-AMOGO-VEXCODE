@@ -33,7 +33,7 @@ Advanced Code
 [AMOGO PROS](https://github.com/Unionjackjz1/HW-AMOGO-PROS/) 
 
 ## Contributors
-Thank you to the following for making make this project come to life:
+Thank you to the following for making this project come to life:
 - Avi Dube
 - Ben Ren
 - Dru Reed
