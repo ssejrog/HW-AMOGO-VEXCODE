@@ -22,7 +22,7 @@ AMOGO (alliance mobile goal) is a ring focused robot that can fill a goal with r
 ## External Links
 
 Reveal  
-VEX Forum  
+VEX Forum with CAD  
 
 Basic Code  
 [DOGO VEXcode](https://github.com/Unionjackjz1/HW-DOGO-VEXCODE/)    
